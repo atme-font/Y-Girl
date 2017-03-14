@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="jquery-2.1.0.min.js"></script>
+    <style>
+        .odiv{
+            width: 150px;
+            height: 150px;
+            position: relative;
+            margin: 30px;
+            transform: rotate(0deg);    
+            display: inline-block;
+            transition: transform 2s;   /*鼠标指针放到 div 元素 修改旋转角度*/
+		}
+        .odiv:hover{
+            transform: rotate(360deg);
+        }
+        .odiv-1,
+        .odiv-2,
+        .odiv-3,
+        .odiv-4,
+        .odiv-5,
+        .odiv-6{
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            border-radius: 150px;
+            top: 0;
+            left: 0;
+        }
+        .odiv-2 {
+            transform: rotate(60deg);
+        }
+        .odiv-3 {
+            transform: rotate(120deg);
+        }
+        .odiv-4 {
+            transform: rotate(180deg);
+        }
+        .odiv-5 {
+            transform: rotate(240deg);
+        }
+        
+        .odiv-6 {
+            transform: rotate(300deg);
+        }
+        
+        .ddiv-1,
+        .ddiv-2,
+        .ddiv-3,
+        .ddiv-4,
+        .ddiv-5,
+        .ddiv-6,
+        .ddiv-7 {
+            position: absolute;
+        }
+        
+        .ddiv-1 {
+            width: 1px;
+            height: 70px;
+            background: #64CBEA;
+            top: 4px;
+            left: 75px;
+        }
+        
+        .ddiv-2 {
+            width: 18px;
+            height: 15px;
+            background: #1cf9d7;
+            top: -6px;
+            left: 67px;
+            transform: rotate(-60deg) skew(-0.55rad);
+        }
+        
+        .ddiv-3 {
+            width: 1px;
+            height: 90px;
+            background: blue;
+            top: -7px;
+            left: 96px;
+            transform: rotate(30deg) skew(0rad);
+        }
+        
+        .ddiv-4 {
+            width: 0px;
+            height: 0px;
+            border-bottom: 12px solid rgba(0, 0, 0, 0);
+            border-left: 15px solid rgba(0, 0, 0, 0);
+            border-top: 10px solid #64CBEA;
+            border-right: 15px solid rgba(0, 0, 0, 0);
+            top: 9px;
+            left: 92px;
+            transform: rotate(30deg) skew(0rad);
+        }
+        
+        .ddiv-5 {
+            width: 15px;
+            height: 15px;
+            background: #ff0000;
+            transform: rotate(0deg) skew(0rad);
+            border-radius: 30px;
+            top: -8px;
+            left: 112px;
+        }
+        
+        .ddiv-6 {
+            width: 10px;
+            height: 10px;
+            background: #ccc;
+            transform: rotate(0deg) skew(0rad);
+            border-radius: 7px;
+            top: -4px;
+            left: 94px;
+        }
+        
+        .ddiv-7 {
+            width: 10px;
+            height: 10px;
+            background: #000;
+            transform: rotate(0deg) skew(0rad);
+            border-radius: 7px;
+            top: 11px;
+            left: 122px;
+            position: absolute;
+        }
+        
+        span {
+            display: block;
+            width: 5px;
+            height: 5px;
+            background: #ff0000;
+            margin: 73px;
+            position: absolute;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="odiv">
+        <div class="odiv-1">
+            <span></span>
+            <div class="ddiv-1"></div>
+            <div class="ddiv-2"></div>
+            <div class="ddiv-3"></div>
+            <div class="ddiv-4"></div>
+            <div class="ddiv-5"></div>
+            <div class="ddiv-6"></div>
+            <div class="ddiv-7"></div>
+        </div>
+        <!--<div class="odiv-2">
+            <span></span>
+            <div class="ddiv-1"></div>
+            <div class="ddiv-2"></div>
+            <div class="ddiv-3"></div>
+            <div class="ddiv-4"></div>
+            <div class="ddiv-5"></div>
+            <div class="ddiv-6"></div>
+            <div class="ddiv-7"></div>
+        </div>
+        <div class="odiv-3">
+            <span></span>
+            <div class="ddiv-1"></div>
+            <div class="ddiv-2"></div>
+            <div class="ddiv-3"></div>
+            <div class="ddiv-4"></div>
+            <div class="ddiv-5"></div>
+            <div class="ddiv-6"></div>
+            <div class="ddiv-7"></div>
+        </div>
+        <div class="odiv-4">
+            <span></span>
+            <div class="ddiv-1"></div>
+            <div class="ddiv-2"></div>
+            <div class="ddiv-3"></div>
+            <div class="ddiv-4"></div>
+            <div class="ddiv-5"></div>
+            <div class="ddiv-6"></div>
+            <div class="ddiv-7"></div>
+        </div>
+        <div class="odiv-5">
+            <span></span>
+            <div class="ddiv-1"></div>
+            <div class="ddiv-2"></div>
+            <div class="ddiv-3"></div>
+            <div class="ddiv-4"></div>
+            <div class="ddiv-5"></div>
+            <div class="ddiv-6"></div>
+            <div class="ddiv-7"></div>
+        </div>
+        <div class="odiv-6">
+            <span></span>
+            <div class="ddiv-1"></div>
+            <div class="ddiv-2"></div>
+            <div class="ddiv-3"></div>
+            <div class="ddiv-4"></div>
+            <div class="ddiv-5"></div>
+            <div class="ddiv-6"></div>
+            <div class="ddiv-7"></div>
+        </div>-->
+    </div>
+    <!--<script>
+        $(function () {
+            for (var i = 0; i < 10; i++) {
+                $(".odiv:eq(0)").clone(true).appendTo("body");
+            }
+        })
+    </script>-->
+</body>
+
+</html>

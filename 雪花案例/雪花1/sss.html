@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="jquery-2.1.0.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://www.htmleaf.com/templets/default/css/default-min.css">
+    <style>
+        * {
+            border: 1;
+            padding: 0;
+            margin: 0;
+        }
+        body{background-color: #fff;}
+        .odiv {
+            margin: 30px;
+            display: inline-block;
+            font-size: 0;
+            width: 100px;    
+            height: 100px;
+        }
+        img{width: 100%;height: 100%;};
+      
+        input {
+            display: inline-block;
+            margin: 5px auto;
+        }
+        
+        .p {
+            display: block;
+            width: 600px;
+            margin: 0 auto;
+            height: 190px;
+        }
+        
+        .p div {
+            float: left;
+            width: 274px;
+        }
+        .p input{margin-top: 3px;}
+        .htmleaf-container {
+            display: inline-block;
+            float: right !important;
+        }
+        
+        .htmleaf-container input:focus {
+            outline: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="p">
+        <div>
+            <input class="Y" type="text" value="0">&nbsp;<span>Y轴旋转度数</span>
+          
+            <input class="X" type="text" value="0">&nbsp;<span>X轴旋转度数</span>
+          
+            <input class="Z" type="text" value="0">&nbsp;<span>Z轴旋转度数</span>
+          
+            <input class="S" type="text" value="2">&nbsp;<span>过度时间</span>
+            
+            <input class="D" type="text" value="100">&nbsp;<span>雪花尺寸(px)</span>
+          
+            <input class="shul" type="text" value="1"> &nbsp;<span>雪花数</span>
+
+            <input class="G" type="text" value="0">&nbsp;<span>样式(0-9)</span>
+        </div>
+        <div class="htmleaf-container">
+
+            <div id="content-wrapper">
+                <div class="input-toggles">
+                    <input class="color" value="#64CBEA"><span>雪花颜色</span>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+
+    <div class="odiv">
+       
+       <img src="images/0.png" alt="">
+      
+    </div>
+    <script type="text/javascript" src="js/jqColorPicker.min.js"></script>
+    <script src="js/bgcolor.js"></script>
+
+    <script>
+        $(function () {
+
+
+            var X=$(".X").attr("value");
+            var Y=$(".Y").attr("value");
+            var Z=$(".Z").attr("value");
+            var S=$(".S").attr("value");
+            var D=$(".D").attr("value");
+            var G=$(".G").attr("value");
+            shijiao();
+            $("input[type='text']").blur(function () {
+                if ($(".X,.Y,.Z,.S,.D,.G").val() == "" || isNaN($(".X,.Y,.Z,.S,.D,.G").val()) || $(".X,.Y,.Z,.S,.D,.G").val() < 0) {
+                    alert("请输入阿拉伯数字,且不小于0!");
+                    $(this).val("0");
+                } else {
+                    X = $(".X").val();
+                    Y = $(".Y").val();
+                    Z = $(".Z").val();
+                    S = $(".S").val();
+                    D = $(".D").val();
+                    G = $(".G").val();
+                    shijiao();
+
+                }
+
+            })
+           
+            function shijiao() {
+                $(".odiv").css({"transition":"transform " + S + "s","width":D+"px","height":D+"px"});
+                $(".odiv img").attr("src","images/"+G+".png");
+                console.log(G)
+            }
+
+            $(".odiv").hover(function () {
+                $(this).css("transform", "rotateX(" + X + "deg) rotateY(" + Y + "deg) rotateZ(" + Z + "deg)")
+            }, function () {
+                $(this).css("transform", "rotateX(0deg) rotateY(0deg) rotateZ(0deg)")
+            })
+
+            $(".shul").on("blur", function () {
+                if ($(".shul").val() == "" || isNaN($('.shul').val()) || $(".shul").val() <= 0) {
+                    alert("请输入阿拉伯数字,且不等或小于0!");
+                } else {
+                    l = parseInt($(".shul").val());
+                    gg();
+
+                }
+
+            })
+
+            function gg() {
+                $(".odiv:gt(0)").remove();
+                for (var i = 1; i < l; i++) {
+                    $(".odiv:eq(0)").clone(true).appendTo("body");
+                }
+            }
+            $(".color").focus(function () {
+                $(".cp-color-picker").mousemove(function () {
+                    bgcolor();
+
+                })
+
+
+            })
+            bgcolor();
+
+            function bgcolor() {
+                $(".odiv").css("background-color", $(".color").val());
+              
+            }
+
+        })
+    </script>
+</body>
+
+</html>
