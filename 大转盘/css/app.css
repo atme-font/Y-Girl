@@ -1,0 +1,29 @@
+/* Write your styles */
+body{ margin:0; padding:0;background:#f0373d;}
+#main{ max-width:640px; min-width:320px; background:#f0373d; height:100%; margin:0 auto; overflow:hidden; position:relative;}
+.turn_head{ width:100%; height:50px; padding:0px 10px;}
+.turn_head a,.turn_head div{float:left; height:50px; line-height:50px; color:#fff;}
+.turn_fh{ width:20%; display:block;  color:#fff; font-size:2.8rem; font-family:"宋体";}
+.turn_bt{ width:60%; color:#fff; font-size:1.8rem; text-align:center;}
+.turn_hd{ width:90%; background:#f67379; min-height:50px; height:auto !important; margin:0 auto; overflow:auto; margin-top:1.5rem;}
+.turn_hd .turn_gz{ color:#f0373d;Writing-mode:tb-rl; font-size:2.8rem; line-height:3rem; text-align:center; padding:8px 5px; border:5px solid #f0373d; margin:5px; background:#fff;  text-shadow:1px 1px 2px #b08485;}
+.turn_gt{ width:100%; height:6px; background:url(../img/gt_bj.jpg) repeat-x; overflow:hidden;}
+.am-u-sm-3{ padding:0; margin:0 auto; width:13%;}
+.am-u-sm-9{ width:87%;}
+@media (min-width: 320px)  and (max-width: 430px) { 
+  .am-u-sm-3{ width:18%;}
+  .am-u-sm-9{ width:82%;}
+ }
+
+.turn_hd .turn_sm{ color:#fff; font-size:1.3rem; padding:8px 10px;}
+.turn_sm .sm_bt{ color:#e8ba00; font-size:1.6rem;}
+.turn_sh,{ width:100%; height:auto; overflow:auto; margin:0 auto;} 
+.turn_sh img{ width:100%;}
+
+.turn_pf{ display:block; position:absolute;}
+.turn_pfo{ display:block; position:absolute; right:130px; top:100px;}
+.turn_pft{ display:block; width:12px; height:12px; border-radius:100%; background:#fff; opacity:0.7; position:absolute; right:7px; top:61px;}
+.turn_zp{ width:100%;}
+.turn_big{ position:fixed; bottom:0; width:100%; overflow:hidden; margin-bottom:-50%; text-align:center; background:url(../img/sh.jpg) no-repeat center top #c72413; padding-top:150px; background-size:100%;}
+.turn_big img{ width:100%;}
+.turn_zhi{ position:fixed; bottom:0; left:50%; margin-left:-69px;}

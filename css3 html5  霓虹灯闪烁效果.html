@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>css3 html5  霓虹灯闪烁效果</title>
+<style>
+/* HTML5 display-role reset for older browsers */
+
+
+
+  body {
+  background-color: #ef1010;
+  font-size: 6em;
+  color: #FFF;
+  text-align: center;
+}
+    
+#circle {
+
+    -moz-border-radius: 50px;
+    -webkit-border-radius: 50px;
+    border-radius: 50px;
+    text-shadow: 0 0 15px;
+    -webkit-animation: bglow1 .3s ease infinite;
+}
+    
+    
+@-webkit-keyframes bglow1 {
+  100% {
+    color: rgb(239, 106, 8);
+    text-shadow: 0 30px 90px;
+  }        
+ }
+    
+    
+  </style>
+  
+</head>
+<body>
+ <li id="circle"></li>
+
+  <!-- section id="glow">
+  <p id="circle">0</p>
+  <p>0</p>
+  <p>O</p>
+  <p>0</p>
+  <span>—</span>
+  <p>0</p>
+  <p>0</p>
+  <p>0</p>
+  <p>0</p>
+  <p>0</p>
+  <p>S</p>
+</section -->
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        ul,
+        ol,
+        li {
+            list-style: none;
+        }
+        
+        .container {
+            width: 500px;
+            margin: 60px auto;
+            height: 200px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .container ul {
+            background-color: aqua;
+            text-align: center;
+            font-size: 0;
+        }
+        
+        .container ul li {
+            display: inline-block;
+            cursor: pointer;
+            padding: 6px 18px;
+            background-color: fuchsia;
+            font-size: 15px;
+        }
+        
+        .container ul li.on {
+            background-color: darkorange;
+        }
+        
+        .container .am-tab-panel {
+            height: 160px;
+            width: 100%;
+            background-color: chartreuse;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            transform: translate(-100%, 0);transition: all 1s;
+        }
+        
+        .container .am-active {
+            transform: translate(0, 0);
+        }
+        .container .am-active~.am-tab-panel{transform: translate(100%, 0);}
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <ul id="ul">
+            <li class="on">写个1</li>
+            <li>写个2</li>
+            <li>写个3</li>
+        </ul>
+        <div class="inner" id="inner">
+            <div class="am-tab-panel am-active">111111
+                <br> 111111</div>
+            <div class="am-tab-panel">2222222
+                <br> 222222222</div>
+            <div class="am-tab-panel">333333333
+                <br> 33333333333</div>
+        </div>
+    </div>
+<script>
+    window.onload=function(){
+        function  $(name){
+            return document.getElementById(name);
+        }
+        var $_li=$("ul").getElementsByTagName("li");
+        var oTab=$("inner").getElementsByTagName("div");
+        for(var i=0;i<$_li.length;i++){
+             $_li[i].index=i;
+            $_li[i].onclick=function(){
+                for(var i=0;i<$_li.length;i++){
+                    $_li[i].className="";
+                    oTab[i].className="am-tab-panel";
+                }
+            this.className="on";    
+                oTab[this.index].className="am-tab-panel am-active";
+            };
+            
+        }
+    }
+    
+    
+    </script>
+</body>
+
+</html>

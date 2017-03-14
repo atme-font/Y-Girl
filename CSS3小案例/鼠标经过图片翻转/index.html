@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="鼠标经过图片翻转">
+    <meta name="keywords" content="鼠标经过图片翻转">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>鼠标经过图片翻转</title>
+    <script src="jquery-1.9.1.min.js"></script>
+
+    <link rel="stylesheet" href="css/merge.css">
+    <link rel="stylesheet" href="css/common.css">
+</head>
+
+<body>
+    
+    <div class="container shuxing-wrap">
+            <div class="datu clearfix">
+                <div class="rotate zhongyi">
+                     <div class="before"></div>
+                     <div class="after"></div>
+                     <a href="###"></a>
+                </div>
+                <div class="rotate meirong">
+                     <div class="before"></div>
+                     <div class="after"></div>
+                     <a href="###"></a>
+                </div>
+                <div class="rotate chanhou">
+                     <div class="before"></div>
+                     <div class="after"></div>
+                     <a href="###"></a>
+                </div>
+                <div class="rotate meiti">
+                     <div class="before"></div>
+                     <div class="after"></div>
+                     <a href="###"></a>
+                </div>
+                <div class="rotate kangshuai">
+                     <div class="before"></div>
+                     <div class="after"></div>
+                     <a href="###"></a>
+                </div>
+            <script>
+                $(function(){
+                    $('.rotate').mouseenter(function(){
+                        $(this).addClass("start");
+                    }).mouseout(function(){
+                        $(this).removeClass("start");
+                    });
+                });
+            </script>
+        </div>
+    </div>    
+
+</body>
+
+</html>

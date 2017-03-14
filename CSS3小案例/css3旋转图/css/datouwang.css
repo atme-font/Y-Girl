@@ -1,0 +1,107 @@
+@charset "utf-8";
+* {
+    padding: 0px;
+    margin: 0px;
+}
+  .bor{
+        -webkit-transition: -webkit-transform 1s;
+    }
+    
+    .bor:hover {
+        -webkit-transform: rotate(360deg);
+       
+    }
+    
+.m-artlist {
+    margin: 0 auto;
+    width: 900px;
+    height: 960px;
+}
+
+.m-artlist-2 div {
+    position: relative;
+    float: left;
+    width: 270px;
+    height: 270px;
+}
+
+.m-artlist .bor {
+    width: 240px;
+    height: 240px;
+    position: absolute;
+    transition: all 0.5s ease 0s;
+    border: 1px solid #c6c2c2;
+    background-color: #fff;
+}
+
+.m-artlist-2 .top1:hover .bor:first-child {
+    transform: translate(0px, 240px);
+}
+
+.m-artlist-2 .top1:hover .bor:nth-child(2) {
+    transform: translate(270px, 240px);
+}
+
+.m-artlist-2 .top1:hover .bor:nth-child(3) {
+    transform: translate(540px, 240px);
+}
+
+.m-artlist-2 .top1:hover .bor:nth-child(4) {
+    transform: translate(0px, 480px);
+}
+
+.m-artlist-2 .top1:hover .bor:nth-child(5) {
+    transform: translate(270px, 480px);
+}
+
+.m-artlist-2 .top1:hover .bor:nth-child(6) {
+    transform: translate(540px, 480px);
+}
+
+.m-artlist-2 .top2:hover .bor:first-child {
+    transform: translate(0px, 240px);
+}
+
+.m-artlist-2 .top2:hover .bor:nth-child(2) {
+    transform: translate(270px, 240px);
+}
+
+.m-artlist-2 .top2:hover .bor:nth-child(3) {
+    transform: translate(-270px, 240px);
+}
+
+.m-artlist-2 .top2:hover .bor:nth-child(4) {
+    transform: translate(0px, 480px);
+}
+
+.m-artlist-2 .top2:hover .bor:nth-child(5) {
+    transform: translate(270px, 480px);
+}
+
+.m-artlist-2 .top2:hover .bor:nth-child(6) {
+    transform: translate(-270px, 480px);
+}
+
+.m-artlist-2 .top3:hover .bor:first-child {
+    transform: translate(0px, 240px);
+}
+
+.m-artlist-2 .top3:hover .bor:nth-child(2) {
+    transform: translate(-270px, 240px);
+}
+
+.m-artlist-2 .top3:hover .bor:nth-child(3) {
+    transform: translate(-540px, 240px);
+}
+
+.m-artlist-2 .top3:hover .bor:nth-child(4) {
+    transform: translate(0px, 480px);
+}
+
+.m-artlist-2 .top3:hover .bor:nth-child(5) {
+    transform: translate(-270px, 480px);
+}
+
+.m-artlist-2 .top3:hover .bor:nth-child(6) {
+    transform: translate(-540px, 480px);
+}

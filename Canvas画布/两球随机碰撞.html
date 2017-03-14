@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas id="myCanvas" width="600" height="600" style="background:#000;">您的浏览器不支持</canvas>
+    <script>
+        var cxt = document.getElementById("myCanvas").getContext("2d");
+        var disX = parseInt((Math.random()*10000)/34);
+        var disY = parseInt((Math.random()*1000)/34+280);
+        var disX2 = 200;
+        var disY2 = 20;
+        var x=(Math.random()+0.1)*10;
+        var y=(Math.random()+0.1)*10;
+        var x2=(Math.random()+0.1)*10;
+        var y2=(Math.random()+0.1)*10;
+        function qiu(){
+            cxt.clearRect(0,0,600,600);
+            cxt.fillStyle="#f00";
+            cxt.beginPath();
+            cxt.arc(disX,disY,30,0,2*Math.PI);
+            cxt.closePath();
+            cxt.fill();
+            if(disX>=578){
+                x=-x;
+            }
+            if(disY>=578){
+                y=-y;
+            }
+            if(disX<20){
+                x=Math.abs(-x);
+            }
+            if(disY<20){
+                y=Math.abs(-y);
+            }
+            disX+=x;
+            disY+=y;
+            
+            //第二个求求
+            cxt.save();
+            cxt.fillStyle="#f90";
+            cxt.beginPath();
+            cxt.arc(disX2,disY2,30,0,2*Math.PI);
+            cxt.closePath();
+            cxt.fill();
+            if(disX2>=578){
+                x2=-x2;
+            }
+            if(disY2>=578){
+                y2=-y2;
+            }
+            if(disX2<20){
+                x2=Math.abs(-x2);
+            }
+            if(disY2<20){
+                y2=Math.abs(-y2);
+            }
+            disX2+=x2;
+            disY2+=y2;     
+            cxt.restore();
+            
+            //判断球碰撞
+            if(Math.abs(disX-disX2)<=40 && Math.abs(disY-disY2)<=40 ){
+                x=-x;
+                y=-y;
+                x2=-x2;
+                y2=-y2;
+            }
+        }
+        setInterval(qiu,20);     
+    </script>
+</body>
+
+</html>

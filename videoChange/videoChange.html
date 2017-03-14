@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>videoChange</title>
+	<style type="text/css">
+		*{
+			margin: 0;padding: 0;
+		}
+		video{
+			width: 252px;height: 252px; 
+			border: 1px solid #ccc;
+		}
+		.source{
+			list-style-type: none;
+			display: inline-block;
+			width: 80px;height: 80px;line-height: 80px;
+			border: 1px solid #ccc;
+			text-align: center;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript">
+		$.fn.extend({
+			play:function(url){
+				var v = this[0];
+				if(v.nodeName === 'VIDEO' && typeof v.canPlayType === 'function'){
+					v.src = url;
+					return v;
+				}
+			}
+		});
+
+		$(function(){
+			$('.source').click(function(){
+				$('video').play('video/' + this.id + '.mp4');
+			})
+		})
+	</script>
+</head>
+<body>
+	<video id="video" src="video/video3.mp4" autoplay="autoplay" controls="controls">
+		your browser can not support video..
+	</video>
+	<ul>
+		<li id="video1" class="source">video1</li>
+		<li id="video2" class="source">video2</li>
+		<li id="video3" class="source">video3</li>
+	</ul>
+</body>
+</html>

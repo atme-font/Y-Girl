@@ -1,0 +1,235 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>叮当</title>
+<style>
+div{ text-align:center; }
+</style>
+</head>
+
+<body>
+<div>
+<canvas id="canvas" width="500" height="500" >亲 您的浏览器不支持，请使用***以上版本</canvas>
+</div>
+<script>
+var clock = document.getElementById("canvas");
+	var cxt = clock.getContext("2d");
+	
+	function drawclock(){
+		cxt.clearRect(0,0,500,500);
+		var  newdate = new Date();
+		var hour = new Date().getHours();
+		var minute =new Date().getMinutes();
+		var  second = new Date().getSeconds();
+		//将24小时转化成12小时
+		hour = hour>12 ? hour-12 : hour;
+		hour+=minute/60;
+		minute+=second/60;
+	cxt.fillStyle = "#10D9E9";
+	cxt.font="39px arial";
+	cxt.fillText("懒猪 起床",0,30);
+	
+	//脚丫子
+	cxt.beginPath();
+	cxt.save();
+	cxt.fillStyle = "#ccc";
+	cxt.shadowBlur=5;
+		cxt.shadowColor = "#887D67";
+		cxt.shadowOffsetX =8;
+		cxt.shadowOffsetY = 7;
+	cxt.arc(150,420,50,0,2*Math.PI);
+	cxt.fill();
+	cxt.restore();
+	cxt.closePath();
+	cxt.beginPath();
+	cxt.save();
+	cxt.fillStyle = "#ccc";
+	cxt.shadowBlur=5;
+		cxt.shadowColor = "#887D67";
+		cxt.shadowOffsetX =8;
+		cxt.shadowOffsetY = 7;
+	cxt.arc(350,420,50,0,2*Math.PI);
+	cxt.fill();
+	cxt.restore();
+	cxt.closePath();
+	//画一个大圆
+	cxt.beginPath();
+	cxt.fillStyle = "#10D9E9";
+	cxt.lineWidth = 10;
+	cxt.arc(250,250,200,0,2*Math.PI);
+	cxt.fill();
+	cxt.closePath();
+	
+	
+	//画一个小圆
+		cxt.beginPath();
+	cxt.fillStyle = "#fff";
+	
+	cxt.arc(250,280,150,0,2*Math.PI);
+	cxt.fill();
+	cxt.closePath();
+	
+	//画眼睛
+	
+	    cxt.beginPath();
+		cxt.save();
+		cxt.shadowBlur=5;
+		cxt.shadowColor = "#887D67";
+		cxt.shadowOffsetX =8;
+		cxt.shadowOffsetY = 7;
+	cxt.fillStyle = "#fff";
+	cxt.lineWidth =8;
+	cxt.arc(220,130,35,0,2*Math.PI);
+	cxt.fill();
+	cxt.restore();
+	cxt.closePath();
+	
+	 cxt.beginPath();
+	
+	 cxt.strokeStyle = "#000";
+	 cxt.lineWidth = 4;
+	 cxt.arc(220,130,8,0,1*Math.PI,true);
+	 cxt.stroke();
+      cxt.closePath();
+	  
+	
+	 
+	 
+	   cxt.beginPath();
+	   cxt.save();
+	   cxt.shadowBlur=5;
+		cxt.shadowColor = "#887D67";
+		cxt.shadowOffsetX =8;
+		cxt.shadowOffsetY = 7;
+	cxt.fillStyle = "#fff";
+	cxt.lineWidth =8;
+	cxt.arc(280,130,35,0,2*Math.PI);
+	cxt.fill();
+	cxt.restore();
+	cxt.closePath();
+	cxt.beginPath();
+	 
+	cxt.strokeStyle = "#000";
+	 cxt.lineWidth = 4;
+	 cxt.arc(280,130,8,0,1*Math.PI,true);
+	 cxt.stroke();
+	 cxt.closePath();
+	 
+	 //矩形
+	 cxt.beginPath();
+	 cxt.strokeStyle = "red";
+	 cxt.lineCap = "round";
+	  cxt.lineWidth = 30;
+	 cxt.moveTo(150,430);
+	 cxt.lineTo(350,430);
+	 cxt.stroke();
+	 cxt.closePath();
+	 
+	 //铃铛
+	 cxt.beginPath();
+	
+	 cxt.fillStyle ="#FDD503";
+	 cxt.arc(250, 434,17,0,2*Math.PI);
+	 cxt.fill();
+	  cxt.closePath();
+	   cxt.beginPath();
+	   cxt.strokeStyle = "#FDD503";
+	 cxt.lineCap = "round";
+	    cxt.lineWidth = 10;
+		cxt.moveTo(230,434);
+	 cxt.lineTo(270,434);
+	 cxt.stroke();
+	   cxt.closePath();
+	   
+	   //脚
+	    cxt.beginPath();
+		//时刻
+	for(var i=0;i<12; i++){
+		//保存以前画的画布
+		cxt.save();
+		//重置00
+		cxt.translate(250,280);
+		cxt.beginPath();
+		//给旋转设置一个角度
+		cxt.rotate(i*30*Math.PI/180);
+		//重新载入
+	    //画时刻度
+		cxt.strokeStyle = "#999";
+		cxt.lineWidth=6;
+		cxt.lineCap = "round";
+		cxt.moveTo(0,-100);
+		cxt.lineTo(0,-120);
+		cxt.stroke();
+		cxt.closePath();
+		cxt.restore();
+		}
+		
+	   cxt.closePath();
+	  
+		 
+		//画嘴巴 
+		
+		  
+		  cxt.beginPath();
+		  cxt.lineWidth=4;
+		  cxt.strokeStyle ="#000";
+	 cxt.arc(250, 300,50,0,1*Math.PI);
+	 cxt.stroke();
+		  
+		   cxt.closePath();
+		   
+		   //时针
+		
+		cxt.save();
+		cxt.translate(250,280);
+		cxt.rotate(30*hour*Math.PI/180);
+		cxt.beginPath();
+		cxt.strokeStyle = "red";
+		cxt.lineWidth=5;
+		cxt.moveTo(0,-60);
+		cxt.lineTo(0,10);
+		cxt.stroke();
+		cxt.closePath();
+		cxt.restore();
+		//分针
+		
+		cxt.save();
+		cxt.translate(250,280);
+		cxt.rotate(minute*6*Math.PI/180);
+		cxt.beginPath();
+		cxt.strokeStyle = "#999";
+		cxt.lineWidth=4;
+		cxt.moveTo(0,-80);
+		cxt.lineTo(0,10);
+		cxt.stroke();
+		cxt.closePath();
+		cxt.restore();
+		
+		//秒针
+		
+		cxt.save();
+		cxt.translate(250,280);
+		cxt.rotate(second*6*Math.PI/180);
+		cxt.beginPath();
+		cxt.strokeStyle = "#666";
+		cxt.lineWidth=1;
+		cxt.moveTo(0,-100);
+		cxt.lineTo(0,10);
+		cxt.stroke();
+		cxt.closePath();
+		cxt.restore();
+		
+		//鼻子
+		cxt.save();
+		cxt.translate(250,280);
+		cxt.fillStyle = "red";
+		cxt.arc(0,0,15,0,2*Math.PI);
+		cxt.fill();
+		cxt.restore();
+	}
+		setInterval(drawclock,1000);
+		drawclock();
+</script>
+</body>
+</html>

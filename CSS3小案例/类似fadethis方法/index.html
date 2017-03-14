@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>jQuery鼠标滚动控制全屏页面滚动 - xw素材网</title>
+<style type="text/css">
+h1,body,html{
+	padding: 0;
+	margin: 0;
+}
+body{
+	font-family: Arial,"Microsoft YaHei","Hiragino Sans GB",sans-serif;
+}
+html,body{
+	height: 100%;
+	overflow: hidden;
+}
+h1{
+	font-size: 6em;
+	font-weight: normal;
+}
+p{
+	font-size: 1em;
+	margin:0.5em 0 2em 0;
+}
+#container,.section{
+	height: 100%;
+	position: relative;
+}
+#section0{
+	background-color: #000;
+	background-size: cover;
+	background-position: 50% 50%;
+}
+#section0{
+	background:#00ff99;
+	color: #fff;
+	text-shadow:1px 1px 1px #333;
+}
+#section0 p{
+	color: #F1FF00;
+}
+.left{
+	float: left;
+}
+.intro{
+	position: absolute;
+	top: 50%;
+	width: 100%;
+	-webkit-transform: translateY(-50%);
+	transform: translateY(-50%);
+	text-align: center;
+}
+#section0 .title{
+	-webkit-transform: translateX(-100%);
+	transform: translateX(-100%);
+	-webkit-animation: sectitle0 1s ease-in-out 100ms forwards;
+	animation: sectitle0 1s ease-in-out 100ms forwards;
+}
+#section0 p{
+	-webkit-transform: translateX(100%);
+	transform: translateX(100%);
+	-webkit-animation: sec0 1s ease-in-out 100ms forwards;
+	animation: sec0 1s ease-in-out 100ms forwards;
+}
+@-webkit-keyframes sectitle0{
+	0%{
+		-webkit-transform: translateX(-100%);
+		transform: translateX(-100%);
+	}
+	100%{
+		-webkit-transform: translateX(0);
+		transform: translateX(0);
+	}
+}
+@keyframes sectitle0{
+	0%{
+		-webkit-transform: translateX(-100%);
+		transform: translateX(-100%);
+	}
+	100%{
+		-webkit-transform: translateX(0);
+		transform: translateX(0);
+	}
+}
+@-webkit-keyframes sec0{
+	0%{
+		-webkit-transform: translateX(100%);
+		transform: translateX(100%);
+	}
+	100%{
+		-webkit-transform: translateX(0);
+		transform: translateX(0);
+	}
+}
+@keyframes sec0{
+	0%{
+		-webkit-transform: translateX(100%);
+		transform: translateX(100%);
+	}
+	100%{
+		-webkit-transform: translateX(0);
+		transform: translateX(0);
+	}
+}
+</style>
+</head>
+<body>
+<div id="container">
+	<div class="section active" id="section0">
+		<div class="intro">
+			<h1 class="title">九班同学网</h1>
+			<p>适用九班男女同学，大小同学，老少同学，地域同学，爱好同学，口味同学，眼光同学等。</p>
+			<p>来源：<a href="##" target="_blank">九班魔鬼网</a></p>
+		</div>
+	</div>
+</div>
+</body>
+</html>

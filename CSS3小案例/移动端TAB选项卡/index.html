@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="jquery-1.9.1.min.js"></script>
+    <style>
+        *{margin: 0; padding: 0;}
+        ul,li,ol{list-style: none;}
+        .container{width: 500px; overflow: hidden; margin: 60px auto; position: relative; height: 200px;}
+        .container ul{background-color: #efca03;}
+        .container ul li{display: inline-block; padding: 6px 18px; cursor: pointer;}
+        .container ul li.on{background-color: #cbef03;}
+        .container .am-tab-panel{height: 160px; width: 100%; background-color: #92f8fc; position: absolute; bottom: 0; left: 0; transform: translate(-100%,0); -webkit-transform: translate(-100%,0); transition: all 1s; -webkit-transition: all 1s;}
+        .container .am-active{transform: translate(0,0); -webkit-transform: translate(0,0);}
+        .container .am-active ~div{transform: translate(100%,0); -webkit-transform: translate(100%,0);}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <ul id="ul">
+            <li class="on">first</li>
+            <li>second</li>
+            <li>third</li>
+        </ul>
+        <div class="inner" id="inner">
+            <div class="am-tab-panel am-active">
+                the first page!<br>the first page!
+            </div>
+            <div class="am-tab-panel">
+                the second page!<br>the second page!
+            </div>
+            <div class="am-tab-panel">
+                the third page!<br>the third page!
+            </div>
+        </div>
+    </div>
+    <script>
+        window.onload=function(){
+            function $(name){
+                return document.getElementById(name);
+            }
+            //alert($("ul"));
+            var oLi = document.getElementsByTagName("li");
+            var oTab = $("inner").getElementsByTagName("div");
+            for(var i=0; i<oLi.length; i++){
+                //为了防止闭包；
+                oLi[i].index=i;
+                oLi[i].onclick=function(){
+                    //console.log(this.index);
+                    for(i=0; i<oLi.length;i++){
+                        oLi[i].className="";
+                        oTab[i].className="am-tab-panel";
+                    }
+                    this.className="on";
+                    console.log(oTab[this.index].className);
+                    oTab[this.index].className="am-tab-panel am-active";
+                }
+            }
+        }
+        /*$(function(){
+            $(".container").find("li").each(function(index){
+                $(this).click(function(){
+                    $(this).addClass("on").siblings("li").removeClass("on");
+                 $(".inner").find(".am-tab-panel").eq(index).addClass("am-active").siblings(".am-tab-panel").removeClass("am-active");   
+                });
+            });
+        });*/
+    </script>
+</body>
+</html>

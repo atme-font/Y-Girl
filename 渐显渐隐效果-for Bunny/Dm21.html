@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        *{ padding: 0px; margin: 0px;}
+        body{ background: #ccc;}
+        li{list-style: none; width: 220px; height: 110px; margin-bottom:3px; border: 5px solid #fff; opacity: 0.2; filter:alpha(opacity=20);}
+
+    </style>
+
+</head>
+<body>
+<ul>
+    <li>
+        <img src="images/1.jpg" width="220" height="110" alt=""/>
+    </li>
+    <li>
+        <img src="images/2.jpg" width="220" height="110" alt=""/>
+    </li>
+    <li>
+        <img src="images/3.jpg" width="220" height="110" alt=""/>
+    </li>
+    <li>
+        <img src="images/4.jpg" width="220" height="110" alt=""/>
+    </li>
+
+</ul>
+</body>
+</html>
+<script type="text/javascript">
+
+window.onload=function(){
+    var aLi=document.getElementsByTagName("li");
+    var i=0;
+    var aTimer=[];  // 存储每一个元素的timer值 alpha值
+    var aAlp=[];
+    for(i=0;i<aLi.length;i++){
+        aLi[i].iIndex=i;
+        aLi[i].bTag=false;//标记 true渐显示  false 渐隐
+        aTimer[i]=null;//初始化
+        aAlp[i]=30;
+        aLi[i].onmouseover=function(){
+            this.bTag=true;
+            startMove(this.bTag,this.iIndex);
+        };
+        aLi[i].onmouseout=function(){	/*-----------qz:原来写的是aLi.onmouseout = function(){..} 大哥[i]被你吃了吗------------*/
+            this.bTag=false;
+            startMove(this.bTag,this.iIndex);
+        };
+    }
+    //运动函数
+    function startMove(bTag,iIndex){
+        var iSpeed;
+        var iTarget;
+        if(aTimer[iIndex]){
+            clearInterval(aTimer[iIndex]);
+            //alert(aTimer[iIndex]);
+        }
+		
+		if(bTag){//30->100变化过程
+			iSpeed=5;
+			iTarget=100;
+		}
+		else{
+			iSpeed=-5;
+			iTarget=30;
+		}
+
+        aTimer[iIndex]=setInterval(function(){
+			/*--------qz:这一段要放在setInterVal的外面好不好，我已经帮你拿到上面去了--------*/
+            /*if(bTag){//30->100变化过程
+                iSpeed=5;
+                iTarget=100;
+            }
+            else{
+                iSpeed=-5;
+                iTarget=30;
+            }*/
+            if(Math.abs(aAlp[iIndex]-iTarget)<=Math.abs(iSpeed)){//这样就接近iTarget
+                clearInterval(aTimer[iIndex]);
+                //aTimer=null;	/*-----------qz:这行是个什么鬼，吓得我赶紧注释掉了-----------*/
+                aAlp[iIndex]=iTarget;
+            }
+            else{
+                aAlp[iIndex]+=iSpeed;
+            }
+            //设置透明度
+            aLi[iIndex].style.opacity=aAlp[iIndex]/100;
+            aLi[iIndex].style.filter="alpha(opacity="+aAlp[iIndex]+")"
+        },10);
+    }
+};
+
+
+
+</script>
+

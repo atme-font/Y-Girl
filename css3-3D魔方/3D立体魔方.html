@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="jquery-2.1.0.min.js"></script>
+    <style>
+        body {
+            height: 100vh;
+        }
+        
+        .container {
+            position: absolute;
+            height: 100px;
+            width: 100px;
+            left: 33%;
+            top: 50%;
+            -webkit-transform: translateX(-50%) translateY(-50%);
+            transform: translateX(-50%) translateY(-50%);
+            -webkit-perspective: 400px;
+            perspective: 400px;
+        }
+        
+        .cube{
+            height: 100px;
+            width: 100px;
+            -webkit-transform-origin: 50% 50%;
+            transform-origin: 50% 50%;
+            -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+            -webkit-animation: rotate 4s infinite ease-in-out;
+            animation: rotate 4s infinite ease-in-out;
+            
+        }
+        
+        .side {
+            position: absolute;
+            display: block;
+            height: 100px;
+            width: 100px;
+        }
+        
+        .side1 {
+            background: #41C3AC;
+            -webkit-transform: translateZ(100px);
+            transform: translateZ(100px);
+        }
+        
+        .side2 {
+            background: #FF884D;
+            -webkit-transform: rotateY(90deg) translateZ(100px);
+            transform: rotateY(90deg) translateZ(100px);
+        }
+        
+        .side3 {
+            background: #32526E;
+            -webkit-transform: rotateY(180deg) translateZ(100px);
+            transform: rotateY(180deg) translateZ(100px);
+        }
+        
+        .side4 {
+            background: #65A2C5;
+            -webkit-transform: rotateY(-90deg) translateZ(100px);
+            transform: rotateY(-90deg) translateZ(100px);
+        }
+        
+        .side5 {
+            background: #FFCC5C;
+            -webkit-transform: rotateX(90deg) translateZ(100px);
+            transform: rotateX(90deg) translateZ(100px);
+        }
+        
+        .side6 {
+            background: #FF6B57;
+            -webkit-transform: rotateX(-90deg) translateZ(100px);
+            transform: rotateX(-90deg) translateZ(100px);
+        }
+        /*
+@keyframes rotate{
+  0%{
+    transform:rotateX(0deg) rotateY(0deg);
+  }
+  
+  100%{
+    transform:rotateX(0deg) rotateY(360deg);
+  }
+}
+*/
+        
+        a {
+            font-family: helvetica;
+            color: #428bca;
+            text-align: center;
+            display: block;
+        }
+        
+        .container2 {
+            left: 66%;
+        }
+        
+        .container2 .side {    
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="cube">
+            <div class="side side1">
+            </div>
+            <div class="side side2">
+            </div>
+            <div class="side side3">
+            </div>
+            <div class="side side4">
+            </div>
+            <div class="side side5">
+            </div>
+            <div class="side side6">
+            </div>
+        </div>
+    </div>
+    <div class="container container2">
+        <div class="cube">
+            <div class="side side1">
+            </div>
+            <div class="side side2">
+            </div>
+            <div class="side side3">
+            </div>
+            <div class="side side4">
+            </div>
+            <div class="side side5">
+            </div>
+            <div class="side side6">
+            </div>
+        </div>
+    </div>
+   
+    <script>
+           var x=0;
+           var y=0;
+        $(document).mousedown(function (e) {
+            var pointX =e.pageX;
+            var pointY =e.pageY;
+            $(document).mousemove(function (e) {
+                var pointXx = e.pageX;
+                var pointYy = e.pageY;
+                 x+=(pointXx-pointX)*0.03;
+                 y+=(pointYy-pointY)*0.03;
+                $(".cube").css("transform", "rotateX(" + -y  + "deg) rotateY(" +x + "deg)");
+                $(document).mouseup(function () {
+                    $(this).unbind('mousemove');
+                })
+            })
+        });
+    </script>
+</body>
+
+</html>
