@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>test20151011</title>
+<style type="text/css">
+*{margin:0;padding:0;list-style:none;}
+li{margin:10px auto;height:200px;width:300px;border:1px solid #ccc;background:url(http://img.sj33.cn/uploads/allimg/201505/21040RA2-4.gif) no-repeat center;position:relative;}
+img{opacity:0;transition:all ease .2s;-moz-transition:all ease .2s;height:100%;width:100%;}
+</style>
+<script type="text/javascript">
+window.onload = function(){
+	var AllImg = document.images,l = AllImg.length,i;
+	
+	for(i = 0;i < l;i++){
+		AllImg[i].onload = function(){
+			this.style.opacity = 1;
+		}
+	}
+	function showImg(){
+		var sTop = document.documentElement.scrollTop + document.documentElement.clientHeight;
+		var imgs = document.querySelectorAll('img:not([src])');
+		for(i = 0;i < l;i++){
+			var img = imgs[i];
+			if(img.offsetParent.offsetTop < sTop){
+				img.src = img.dataset.src;
+				img.removeAttribute('data-src');
+			}
+		}
+	}
+	showImg();
+	document.onscroll = window.onresize = showImg;
+}
+</script>
+</head>
+
+<body>
+<ul>
+	<li><img data-src="http://a.hiphotos.baidu.com/image/pic/item/0bd162d9f2d3572ce98282e18e13632762d0c3af.jpg"/></li>
+	<li><img data-src="http://b.hiphotos.baidu.com/image/pic/item/4e4a20a4462309f7f1b240f0710e0cf3d6cad677.jpg"/></li>
+	<li><img data-src="http://b.hiphotos.baidu.com/image/pic/item/f603918fa0ec08fae8a153a65bee3d6d55fbda0a.jpg"/></li>
+	<li><img data-src="http://d.hiphotos.baidu.com/image/pic/item/1b4c510fd9f9d72aebede7a1d62a2834359bbb85.jpg"/></li>
+	<li><img data-src="http://b.hiphotos.baidu.com/image/pic/item/30adcbef76094b367548b4e4a1cc7cd98c109de5.jpg"/></li>
+	<li><img data-src="http://b.hiphotos.baidu.com/image/pic/item/060828381f30e9247957f17f4e086e061c95f789.jpg"/></li>
+	<li><img data-src="http://a.hiphotos.baidu.com/image/pic/item/aa18972bd40735fa6eb223f79c510fb30f240839.jpg"/></li>
+	<li><img data-src="http://h.hiphotos.baidu.com/image/pic/item/42a98226cffc1e172dfde17f4890f603738de93a.jpg"/></li>
+	<li><img data-src="http://c.hiphotos.baidu.com/image/pic/item/d6ca7bcb0a46f21f54a4331df4246b600d33aee8.jpg"/></li>
+	<li><img data-src="http://c.hiphotos.baidu.com/image/pic/item/34fae6cd7b899e51b5c6276f41a7d933c8950d04.jpg"/></li>
+	<li><img data-src="http://g.hiphotos.baidu.com/image/pic/item/0eb30f2442a7d93376e0f908ae4bd11373f00104.jpg"/></li>
+	<li><img data-src="http://h.hiphotos.baidu.com/image/pic/item/a8773912b31bb051275cae53357adab44aede055.jpg"/></li>
+	<li><img data-src="http://f.hiphotos.baidu.com/image/pic/item/377adab44aed2e736e919b578401a18b87d6fa55.jpg"/></li>
+	<li><img data-src="http://g.hiphotos.baidu.com/image/pic/item/267f9e2f07082838f175c16fbb99a9014c08f155.jpg"/></li>
+	<li><img data-src="http://a.hiphotos.baidu.com/image/pic/item/6a600c338744ebf83a2f7944daf9d72a6059a76a.jpg"/></li>
+	<li><img data-src="http://f.hiphotos.baidu.com/image/pic/item/f636afc379310a55fe3c4083b54543a9822610a8.jpg"/></li>
+	<li><img data-src="http://d.hiphotos.baidu.com/image/pic/item/0df431adcbef760958f2f28b2ddda3cc7cd99e2c.jpg"/></li>
+</ul>
+</body>
+</html>

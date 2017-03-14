@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8" />
+	<title>shoppingCarEvaluation</title>
+	<style type="text/css">
+		*{
+			margin: 0;padding: 0;
+		}
+		#shoppingCar{
+			width: 400px;
+			margin: 50px auto;
+		}
+		li{
+			list-style-type: none;
+			border: 1px solid black;
+		}
+		a{
+			color: black;
+			text-decoration: none;
+		}
+
+		#goodsItem li > div,.options a,.options input{
+			display: inline-block;
+			vertical-align: middle;
+			*zoom: 1;
+			*display: inline;
+		}
+		.options{
+			font-size: 0;
+			text-align: center;
+		}
+		.options a,.options input{
+			height: 1.5em;line-height: 1.5em;
+			font-size: 16px;
+			border: 1px solid black;
+			width: 1.5em;
+		}
+		.options input{
+			width: 2.5em;
+			text-align: center;
+		}
+		.goodsImg{
+			width: 100px;height: 100px;
+		}
+		.goodsImg img{
+			width: 100%;height: 100%;
+			display: block;
+		}
+		.selectAll,.reSelect{
+			border: 1px solid black;
+		}
+	</style>
+</head>
+<body>
+	<form action="#" id="shoppingCar">
+		<ul id="goodsItem">
+			<li>
+				<div class="add">
+					<input class="jionCar" type="checkbox" checked="checked" />
+				</div>
+				<div class="goodsContainer">
+					<div class="goodsImg">
+						<img src="http://ubmcmm.baidustatic.com/media/v1/0f000F_1Sh_2eVeuLIlBEs.jpg" />
+					</div>
+					<p class="goodsInfo">商品描述商品描述1</p>
+					<p class="goodsPrice">价格：￥220</p>
+				</div>
+				<div class="options">
+					<a class="subCount" href="###">-</a>
+					<input id="g1001" name="g1001" type="text" readonly="readonly" value="1" />
+					<a class="addCount"	href="###">+</a>
+				</div>
+				<div class="sub">
+					<a href="###" class="removeCar">删除</a>
+				</div>
+			</li>
+			<li>
+				<div class="add">
+					<input class="jionCar" type="checkbox" checked="checked" />
+				</div>
+				<div class="goodsContainer">
+					<div class="goodsImg">
+						<img src="http://ubmcmm.baidustatic.com/media/v1/0f000F_1Sh_2eVeuLIlBEs.jpg" />
+					</div>
+					<p class="goodsInfo">商品描述商品描述2</p>
+					<p class="goodsPrice">价格：￥100</p>
+				</div>
+				<div class="options">
+					<a class="subCount" href="###">-</a>
+					<input id="g1002" name="g1002" type="text" readonly="readonly" value="1" />
+					<a class="addCount"	href="###">+</a>
+				</div>
+				<div class="sub">
+					<a href="###" class="removeCar">删除</a>
+				</div>
+			</li>
+			<li>
+				<div class="add">
+					<input class="jionCar" type="checkbox" checked="checked" />
+				</div>
+				<div class="goodsContainer">
+					<div class="goodsImg">
+						<img src="http://ubmcmm.baidustatic.com/media/v1/0f000F_1Sh_2eVeuLIlBEs.jpg" />
+					</div>
+					<p class="goodsInfo">商品描述商品描述3</p>
+					<p class="goodsPrice">价格：￥50</p>
+				</div>
+				<div class="options">
+					<a class="subCount" href="###">-</a>
+					<input id="g1003" name="g1003" type="text" readonly="readonly" value="1" />
+					<a class="addCount"	href="###">+</a>
+				</div>
+				<div class="sub">
+					<a href="###" class="removeCar">删除</a>
+				</div>
+			</li>
+		</ul>
+		<div>
+			<a class="selectAll" id="selectAll" href="###">全选</a>
+			&emsp;
+			<a class="reSelect" id="reSelect" href="###">反选</a>
+		</div>
+		<div>
+			<p>共选择<span id="totalCount">0</span>件商品，共<span id="totalPrice">0</span>元</p>
+			<p><input id="toSubmit" type="submit" value="结算" /></p>
+		</div>
+	</form>
+	<script type="text/javascript">
+		var goodsItem = {	//这里一般会接收到一个后台返回的信息，存放商品ID和价格，由于这是单机版，就手动定义一个
+			'g1001' : '220',
+			'g1002' : '100',
+			'g1003' : '50'
+		}
+
+		//定义一个选择器在全选和反选中用
+		function getByClassName(emt, clsName){
+			try{	//尝试用ES5的新选择器选择元素
+				return emt.querySelectorAll('.' + clsName);
+			}catch(err){	//如果不支持的话就用老方法，用循环+正则来选择元素
+				var arr = [],
+					elements = emt.getElementsByTagName('*'),
+					i = elements.length,
+					reg = new regExp('\\b' + clsName + '\\b','g');
+				while(i--){
+					if(reg.test(elements[i].className)){
+						arr.push(elements[i]);
+					}
+				}
+				return arr;
+			}
+		}
+
+		//全选
+		function selectAll(){
+			//一般全选按钮有两种状态，如果有未选中的，则全选，如果已经全选中了，则全不选
+			var jionCars = getByClassName(document.getElementById('goodsItem'), 'jionCar'),
+				i = j = jionCars.length,
+				flag = (function(){	//这里判断一下有没有未选中的，返回相应的状态
+					while(j--){
+						if(jionCars[j].checked == false){
+							return true;
+						}
+					}
+					return false;
+				})();
+			while(i--){
+				jionCars[i].checked = flag;
+			}
+		}
+
+		//反选
+		function reSelect(){
+			var jionCars = getByClassName(document.getElementById('goodsItem'), 'jionCar'),
+				i = jionCars.length;
+			while(i--){
+				jionCars[i].checked = !jionCars[i].checked;
+			}
+		}
+		
+		//增减数量
+		function counter(){
+			var c = this.parentNode.getElementsByTagName('input')[0];	//取得同级的input元素
+			c.value = this.className === 'addCount' ? Math.min(++c.value, 9) : Math.max(--c.value, 1);	//判断被点击元素的class，如果点的是+号，数量增加，反之减少，并设置数量的区间范围
+		}
+
+		//删除条目
+		function removeCar(){
+			var p = this.parentNode;
+			while(p.nodeName !== 'LI'){	//循环判断直到找到删除按钮的父级元素li
+				p = p.parentNode;
+			}
+			document.getElementById('goodsItem').removeChild(p);	//从dom中删除这个li	//这里和dom的耦合度太高了，暂时没有想到什么好办法来删除条目，以后一起探讨
+		}
+
+		//计算总和
+		function calc(){
+			var list = [],
+				totalCount = document.getElementById('totalCount'),
+				totalPrice = document.getElementById('totalPrice'),
+				jionCars = getByClassName(document.getElementById('goodsItem'), 'jionCar'),
+				i = jionCars.length,
+				j = 0,
+				c = 0,
+				p = 0;
+			while(i--){
+				if(jionCars[i].checked == true){
+					list.push(jionCars[i].parentNode.parentNode.getElementsByTagName('input')[1]);
+				}
+			}
+			j = list.length;
+			while(j--){
+				var x = list[j];
+				c += parseInt(x.value);
+				p += parseInt(x.value) * parseInt(goodsItem[x.id]);
+			}
+			totalCount.innerHTML = c;
+			totalPrice.innerHTML = p;
+		}
+
+		//绑定事件
+		var shoppingCar = document.getElementById('shoppingCar');
+		shoppingCar.onclick = function(e){	//因为form中按钮比较多，所以这里用事件代理的方法，将点击事件都由form代理，性能好些
+			e = e || window.event;
+			var t = e.target || e.srcElement;
+			e.stopPropagation ? e.stopPropagation() : e.cancelBubble = true;	//停止冒泡，防止点击事件扩散到其他元素
+			switch(t.className){	//通过判断target的className来决定执行什么操作
+				case 'subCount':
+				case 'addCount':
+					counter.call(t);
+					calc();
+					break;
+				case 'jionCar':
+					calc();
+					break;
+				case 'reSelect':
+					reSelect();
+					calc();
+					break;
+				case 'selectAll':
+					selectAll();
+					calc();
+					break;
+				case 'removeCar':
+					removeCar.call(t);
+					calc();
+					break;
+				default:
+					break;
+			}
+		}
+
+		shoppingCar.onsubmit = function(){
+			document.getElementById('toSubmit').disabled = 'disabled';	//禁用提交按钮，防止重复提交订单
+			alert('do some check');	//	提交前需要去服务器走一下查询，例如商品有无变价，有无库存等等，没有问题才能进行提交
+		}
+
+		window.addEventListener ? //load的时候也要算一遍金额
+		window.addEventListener('load', function(){
+			calc();
+		}, false) : 
+		window.attachEvent('onload', function(){
+			calc();
+		})
+	</script>
+</body>
+</html>
