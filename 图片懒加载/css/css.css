@@ -1,0 +1,133 @@
+/* reset */
+html,body,h1,h2,h3,h4,h5,h6,div,dl,dt,dd,ul,ol,li,p,blockquote,pre,hr,table,caption,th,td,form,fieldset,legend,input,button,textarea,menu{margin:0;padding:0;}
+header,footer,section,article,aside,nav,address,menu,details{display:block;}
+table{border-collapse:collapse;border-spacing:0;}
+caption,th{text-align:left;font-weight:normal;}
+html,body,fieldset,img,iframe,abbr{border:0;}
+i,em,address{font-style:normal;}
+[hidefocus],summary{outline:0;}
+li{list-style:none;}
+h1,h2,h3,h4,h5,h6,small{font-size:100%;}
+sup,sub{font-size:83%;}
+pre,code,samp{font-family:inherit;}
+textarea{overflow:auto;resize:none;}
+label{cursor:default;}
+a,button{cursor:pointer;}
+h1,h2,h3,h4,h5,h6,em,strong,b{font-weight:bold;}
+del,ins,u,s,a,a:hover{text-decoration:none;}
+body,textarea,input,button,select,legend{font:12px/1.14 arial,\5b8b\4f53;color:#333;outline:0;}
+body{background:#fff;}
+a,a:hover{color:#333;}
+.head{
+    width: 100%;
+    background: url("../img/1920_01.png") center center no-repeat;
+    height: 287px;
+}
+.contain{
+    background: #f7903b url("../img/1920_02.png") left top no-repeat;
+    text-align: center;
+    color: #fff;
+}
+.contain .txt{
+    height: 259px;
+    background: url("../img/liangfan-_02.png") center center no-repeat;
+}
+.contain .goods{
+    margin: 0 auto;
+    width: 1200px;
+    overflow: hidden;
+}
+.contain .goods img{
+    width: 560px;
+    height: 626px;
+    float: left;
+    margin-bottom: 115px;
+}
+.contain .goods img.el{
+    margin-right: 80px;
+}
+.contain .goods-s{
+    margin: 0 auto;
+    width: 1200px;
+    overflow: hidden;
+}
+.contain .goods-s img{
+    width: 377px;
+    height: 420px;
+    float: left;
+    margin-bottom: 115px;
+}
+.contain .goods-s img.mid{
+    margin-left: 33.5px;
+    margin-right: 33.5px;
+}
+.footer{
+    background: url("../img/liangfan-_12.png") center center no-repeat;
+    height: 191px;
+    padding-bottom: 100px;
+}
+.totop{
+    background:#9b0707 url("../img/1920_03.png") center center no-repeat;
+    height: 178px;
+}
+/*热卖1920页面样式*/
+.head-remai{
+    background: url("../img/banner-2.jpg") center center no-repeat;
+    height: 460px;
+}
+.contain-1{
+    background: url("../img/beijing_01.png") center center no-repeat;
+    text-align: center;
+}
+.contain-2{
+    background: url("../img/beijing_02.png") center center no-repeat;
+    text-align: center;
+    margin-top: -2px;
+}
+.footer-2{
+    background: #7e0000 url("../img/liangfan-_12.png") center center no-repeat;
+    height: 279px;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    margin-top: -2px;
+}
+.wrap{
+    font-size: 0;
+}
+
+/*品质生活1920页面样式*/
+.head-pzsh{
+    background: url("../img/pzsh_01.png") center center no-repeat;
+    height:999px;
+}
+.head-pzsh2{
+    background: url("../img/pzsh_02.png") center center no-repeat;
+    height:186px;
+}
+.goods-pzsh_al {background: url("../img/pzsh_03.png") center center no-repeat;
+    height:2019px;
+    width:100%;
+    overflow: hidden;}
+.goods-pzsh { background: url("../img/pzsh_di.png");margin: 0 auto;
+    width: 1200px;
+    overflow: hidden;}
+.head-pzsh3{
+    background: url("../img/pzsh_04.png") center center no-repeat;
+    height:198px;
+}
+.goods-pzsh_al2 {background: url("../img/pzsh_05.png") center center no-repeat;
+    height:2298px;
+    width:100%;
+    overflow: hidden;}
+.goods-pzsh2 {margin: 0 auto;
+    width: 1200px;
+    overflow: hidden;}
+.goods-pzsh2 img { float:left;}
+.totop_pzsh{
+    background: url("../img/pzsh_06.png") center center no-repeat;
+    height: 258px;
+}
+.totop_pzsh2{
+    background: url("../img/pzsh_07.png") center center no-repeat;
+    height: 479px;
+}
