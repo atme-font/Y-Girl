@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>鼠标滑过弹出jquery在线客服 -777模板</title>
+
+<script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
+
+</head>
+<body>
+
+<style type="text/css">
+*{margin:0;padding:0;list-style-type:none;}
+a,img{border:0;}
+body{font:12px/180% Arial, Helvetica, sans-serif, "宋体";}
+/* suspend */
+.suspend{width:40px;height:198px;position:fixed;top:200px;right:0;overflow:hidden;z-index:9999;}
+.suspend dl{width:120px;height:198px;border-radius:25px 0 0 25px;padding-left:40px;box-shadow:0 0 5px #e4e8ec;}
+.suspend dl dt{width:40px;height:198px;background:url(images/suspend.png);position:absolute;top:0;left:0;cursor:pointer;}
+.suspend dl dd.suspendQQ{width:120px;height:85px;background:#ffffff;}
+.suspend dl dd.suspendQQ a{width:120px;height:85px;display:block;background:url(images/suspend.png) -40px 0;overflow:hidden;}
+.suspend dl dd.suspendTel{width:120px;height:112px;background:#ffffff;border-top:1px solid #e4e8ec;}
+.suspend dl dd.suspendTel a{width:120px;height:112px;display:block;background:url(images/suspend.png) -40px -86px;overflow:hidden;}
+* html .suspend{position:absolute;left:expression(eval(document.documentElement.scrollRight));top:expression(eval(document.documentElement.scrollTop+200))}
+</style>
+
+<div style="height:2000px;"></div>
+
+<div class="suspend">
+	<dl>
+		<dt class="IE6PNG"></dt>
+		<dd class="suspendQQ"><a href="http://shang.qq.com/wpa/qunwpa?idkey=cb91b633f1db596a948828f4f333dbb7394ceda014c958cf" target="_blank"></a></dd>
+		<dd class="suspendTel"><a href="javascript:void(0);"></a></dd>
+	</dl>
+</div>
+
+<script type="text/javascript">           
+$(document).ready(function(){
+
+	 $(".suspend").mouseover(function() {
+        $(this).stop();
+        $(this).animate({width: 160}, 400);
+    })
+	
+    $(".suspend").mouseout(function() {
+        $(this).stop();
+        $(this).animate({width: 40}, 400);
+    });
+	
+});
+</script>
+<div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';">
+<p>适用浏览器：IE8、360、FireFox、Chrome、Safari、Opera、傲游、搜狗、世界之窗. </p>
+<p>来源：<a href="http://www.777moban.com/" target="_blank">777模板</a></p>
+</div>
+</body>
+</html>
