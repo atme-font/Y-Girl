@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>下拉框式日期选项插件Demo</title>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/jquery.dateSelector.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("input[@type=text]").dateSelector();
+	$("#btngetDate1").click(function(){
+		alert("值为："+$("#selectAdate1").val());
+	});
+	$("#btngetDate2").click(function(){
+		alert("值为："+$("#selectAdate2").val());
+	});
+
+})
+</script>
+</head>
+
+<body>
+
+<table style="width: 100%">
+	<tr>
+		<td valign="top" style="width: 395px">
+
+		默认值 为：2008-02-01<br />
+		<input name="selectAdate1" id="selectAdate1" type="text" value="2008-2-1" /><input name="btngetDate1" id="btngetDate1" type="button" value="当前日期值" />
+		<br />
+		<br />
+		<br />
+		没有默认值：<br />
+		<input name="selectAdate2" id="selectAdate2" type="text"/><input name="btngetDate2" id="btngetDate2" type="button" value="当前日期值" /></td>
+		<td valign="top"><strong>本插件基于jQuery框架<br />
+		<br />
+		调用：</strong><br />
+		$(&quot;#selectAdate&quot;).dateSelector({yearEnabled:false,monthEnabled:false});<br />
+		<br />
+		<strong>参数设置：</strong><table>
+			<tr>
+				<td>yearBegin</td>
+				<td>开始年(默认为:1960年)</td>
+			</tr>
+			<tr>
+				<td>yearEnd </td>
+				<td>结束年(默认为:当前年)</td>
+			</tr>
+			<tr>
+				<td>yearEnabled</td>
+				<td>年选择框是否启用(默认为:启用)</td>
+			</tr>
+			<tr>
+				<td>monthEnabled</td>
+				<td>月选择框是否启用(默认为:启用)</td>
+			</tr>
+			<tr>
+				<td>dayEnabled</td>
+				<td>日选择框是否启用(默认为:启用)</td>
+			</tr>
+		</table>
+		<br />
+		<br />
+		<strong>参数调用示例：<br />
+		</strong><br />
+		$(&quot;#selectAdate&quot;).dateSelector({yearBegin:1900,yearEnd:2010,yearEnabled:false,monthEnabled:false});<br />
+		<br />
+		<br />
+		---------------------------------<br />
+		(没剑 2008-1-22)<br />
+		有什么意见请留言给我吧，大家一起进步~<br />
+		<a href="http://regedit.cnblogs.com">http://regedit.cnblogs.com</a><br />
+		<br />
+		<br />
+		</td>
+	</tr>
+	<tr>
+		<td valign="top" style="width: 395px">
+
+&nbsp;</td>
+		<td valign="top">&nbsp;</td>
+	</tr>
+</table>
+</body>
+
+</html>

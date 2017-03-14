@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <style>
+    .ac{ position: relative;}
+    </style>
+    <title></title>
+    <script src="js/jquery.js"></script>
+    <script>
+    $(function(){
+        var $a=$("a.aaa");  //
+        var y=-80,x=10;     //??
+        $a.mouseover(function(e){
+            this.tit=this.title;
+            this.title="";//定一个变量把 a标签的title原本属性替换为空
+            var $div=$("<div id='qxw'>"+this.tit+"</div>"); //新建一个节点  仿制原有a标签经过效果
+            $("body").append($div);//创建节点
+            $("#qxw").css(
+                    {"top":(e.pageY+y)+"px","left":(e.pageX+x)+"px","position":"relative"});//把创建的DIV 和鼠标定位到一起   e为鼠标对象 pageX为鼠标所在点的横坐标
+        }).mouseout(function(){
+            this.title=this.tit;//鼠标移除的时候把title属性 还原到以前的属性
+            $("#qxw").remove();
+        }).mousemove(function(e){
+            $("#qxw").css(
+                    {"top":(e.pageY+y)+"px","left":(e.pageX+x)+"px"})  //让div的跟随鼠标移动
+        });
+
+    })
+    </script>
+</head>
+<body>
+<p>
+<a href="#" title="这是title1" class="aaa">鼠标经过</a><br><br><br>
+<a href="#" title="这是title2"  class="aaa">鼠标经过</a>
+</p>
+</body>
+</html>

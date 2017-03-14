@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=">
+        <title>职位查询</title> 
+        <link rel="stylesheet" href="css/main.css"/>  
+        <link rel="stylesheet" href="css/pagination.css" />
+         <link rel="stylesheet" href="css/layer.css" />
+        <script type="text/javascript" src="js/jquery.min.js"></script>
+        <script src="js/wearther.js"></script>
+        <script type="text/javascript" src="js/layer.js"></script>
+        <script type="text/javascript" src="js/jquery.pagination.js"></script>  <!-- 分页 -->
+        <script type="text/javascript">
+        	/* 分页 */
+			$(function(){
+				//这是一个非常简单的demo实例，让列表元素分页显示
+				//回调函数的作用是显示对应分页的列表项内容
+				//回调函数在用户每次点击分页链接的时候执行
+				//参数page_index{int整型}表示当前的索引页
+				var initPagination = function() {
+					var num_entries = $("#hiddenresult div.result").length;
+					// 创建分页
+					$("#Pagination").pagination(num_entries, {
+						num_edge_entries: 1, //边缘页数
+						num_display_entries: 4, //主体页数
+						callback: pageselectCallback,
+						items_per_page:1 //每页显示1项
+					});
+				 }();
+				 
+				function pageselectCallback(page_index, jq){
+					var new_content = $("#hiddenresult div.result:eq("+page_index+")").clone();
+					$("#Searchresult").empty().append(new_content); //装载对应分页的内容
+					return false;
+				}
+			});
+			/* 搜素显示 隐藏 */
+			$(function(){
+				$('.posttwo').hide();
+				$(".postone .search_most").click(function(){
+				  	$('.postone').hide(); 
+				  	$('.posttwo').show();
+				});
+				$(".posttwo .search_most").click(function(){
+				  	$('.postone').show(); 
+				  	$('.posttwo').hide();
+				});
+				$(".revise").click(function(){
+				  	$('.postone').hide(); 
+				  	$('.posttwo').show();
+				});
+			});
+			/* 下拉 取值  */
+			$(function(){
+				$('.search_name ul li').on('click',function() {		//search_name 所有下拉调用同样的类
+					var $this = $(this),
+					thistxt = $this.text(),
+					ultxt = $this.parent('ul').prev().find('span');
+					ultxt.text(thistxt);
+					$this.parents('.search_name ul').hide();
+				});
+				$('.search_name').hover(function(){
+					$(this).find('ul').show();	
+				},function(){
+					$(this).find('ul').hide();
+				});
+			});
+		</script>
+    </head> 
+    <body>
+    <div class="container">
+    	<div class="conent conentjob conentjobs clearfix">
+    		<div class="bq"></div>
+    		<div class="place"><i class="qzj"></i></div>
+    		<div class="zi zij">职位</div>
+            <div class="post clearfix">
+            	<div class="postone clearfix">
+	                <div class="search_post">
+	                    <div class="search_name" id="search_name">
+	                    	<div class="name"><span>职位名</span><i></i></div>
+	                    	<ul>
+								<li>产品经理</li>
+								<li>销售经理</li>
+								<li>技术总监</li>
+							</ul>
+	                    </div>
+	                    <div class="search_input">
+	                        <input class="search-text" type="text" placeholder="输入职位关键词   如:销售总监">
+	                    </div>
+	                    <div class="ask-btn"><i></i>搜索</div>
+	                </div>
+	                <div class="search_most"><i></i>高级搜索</div>
+	                <div class="search_term">
+	                    <i>●</i>当前搜索:
+	                    <span>高级经理</span>
+	                    <span class="revise">修改搜索条件</span>
+	                </div>
+                </div>
+                <div class="posttwo clearfix">
+                	<div class="posttwobox clearfix">
+	                	<div class="keyword">
+	                		<h2>关 键 字</h2>
+		                	<div class="search_post">
+			                    <div class="search_name">
+			                    	<div class="name"><span>职位名</span><i></i></div>
+			                    	<ul>
+										<li>产品经理</li>
+										<li>销售经理</li>
+										<li>技术总监</li>
+									</ul>
+			                    </div>
+			                    <div class="search_input">
+			                        <input class="search-text" type="text" placeholder="输入职位关键词   如:销蜂屯蚁附总监">
+			                    </div>
+			                </div>
+		                </div>
+		                <div class="search_most"><i class="two"></i>收起高级搜索</div>
+	                </div>
+	                <div class="posttwobox clearfix">
+	                	<div class="termsbox" style="float:left;">
+			                <div class="term">
+			                	<h2>行     业</h2>
+			                	<div class="point">
+				                	<div id="input_btn"></div>	
+				                	<div><i id="select_btn"></i></div>	
+				                	<div id="hangye">
+				                		<div class="tbox">
+											<table cellpadding="0" cellspacing="0" class="hangyetable">
+												<tr>
+													<td>
+														<h6>
+															保险·金融·财会
+														</h6>
+													</td>
+													<td>
+														<div class="subject"><input type="checkbox" name="a" value="保险"><span>保险</span></div>
+														<div class="subject"><input type="checkbox" name="a" value="金融/银行/投资"><span>金融/银行/投资</span></div>
+														<div class="subject"><input type="checkbox" name="a" value="财务/审计/税务"><span>财务/审计/税务</span></div>
+													</td>	
+												</tr>
+												<tr>
+													<td>
+														<h6>
+															计算机·网络·电子·机械
+														</h6>
+													</td>
+													<td>
+														<div class="subject"><input type="checkbox" name="a" value="计算机/网络/通信"><span>计算机/网络/通信</span></div>
+														<div class="subject"><input type="checkbox" name="a" value="电气/能源/动力"><span>电气/能源/动力</span></div>
+														<div class="subject"><input type="checkbox" name="a" value="机械/仪器仪表"><span>机械/仪器仪表</span></div>
+													</td>	
+												</tr>
+												<tr>
+													<td>
+														<h6>
+															销售·客服·人力·行政
+														</h6>
+													</td>
+													<td>
+														<div class="subject"><input type="checkbox" name="a" value="销售"><span>销售</span></div>
+														<div class="subject"><input type="checkbox" name="a" value="客服"><span>客服</span></div>
+														<div class="subject"><input type="checkbox" name="a" value="人力资源"><span>人力资源</span></div>
+														<div class="subject"><input type="checkbox" name="a" value="房地产中介/经纪"><span>房地产中介/经纪</span></div>
+														<div class="subject"><input type="checkbox" name="a" value="行政/后勤"><span>行政/后勤</span></div>
+														<div class="subject"><input type="checkbox" name="a" value="淘宝职位"><span>淘宝职位</span></div>
+													</td>	
+												</tr>
+												<tr>
+													<td>
+														<h6>
+															保险·金融·财会
+														</h6>
+													</td>
+													<td>
+														<div class="subject"><input type="checkbox" name="a" value="银行"><span>银行</span></div>
+														<div class="subject"><input type="checkbox" name="a" value="保险"><span>保险</span></div>
+														<div class="subject"><input type="checkbox" name="a" value="基金/证券/期货/投资"><span>基金/证券/期货/投资</span></div>
+														<div class="subject"><input type="checkbox" name="a" value="会计/审计"><span>会计/审计</span></div>
+														<div class="subject"><input type="checkbox" name="a" value="信托/担保/拍卖/典当"><span>信托/担保/拍卖/典当</span></div>
+													</td>	
+												</tr>
+												<tr>
+													<td>
+														<h6>
+															广告·媒介·设计
+														</h6>
+													</td>
+													<td>
+														<div class="subject"><input type="checkbox" name="a" value="食品/饮料/烟酒/日化"><span>食品/饮料/烟酒/日化</span></div>
+														<div class="subject"><input type="checkbox" name="a" value="百货/批发/零售"><span>百货/批发/零售</span></div>
+														<div class="subject"><input type="checkbox" name="a" value="服装服饰/纺织/皮革"><span>服装服饰/纺织/皮革</span></div>
+														<div class="subject"><input type="checkbox" name="a" value="家具/家电"><span>家具/家电</span></div>
+														<div class="subject"><input type="checkbox" name="a" value="办公用品及设备"><span>办公用品及设备</span></div>
+														<div class="subject"><input type="checkbox" name="a" value="工艺品/珠宝/玩具"><span>工艺品/珠宝/玩具</span></div>
+													</td>	
+												</tr>
+											</table>
+										</div>
+											<div id="queding">确定</div>
+											<div id="quxiao">取消</div>
+									</div>
+								</div>
+			                </div>
+			                <div class="term">
+			                	<h2>职     位</h2>
+			                	<div class="point">
+			                		<input type="text" class="pointx" id="pointx" placeholder="您可以选择或输入">
+									<div id="intelligentbox" class="intelligentall"></div>
+									<div><i id="select_intelligent" class="select_intelligent"></i></div>
+									<!--  隐藏效果 -->
+									<div class="poinbox" id='poinbox'></div>
+									<div class="intelligentbox">
+										<div class="intelligent" id="intelligent">
+											<h2>选择职位<span></span></h2>
+											<div class="intelligent_box">
+												<div class="info" id="info"></div>
+												<div class="main" id="main">
+													<div class="main_tit" >
+														<a href="javascript:;" >全部职位</a>
+													</div>	
+													<div class="use">
+														<ul>
+															<li>保险</li>
+															<li>金融/银行/投资</li>
+															<li>财务/审计/税务</li>
+															<li>计算机/网络/通信</li>
+															<li>其他</li>
+														</ul>
+													</div>
+												</div>
+												<div class="mains" id="mains">
+													<div class="htx">
+														<div class="nav">
+															<a href="javascript:;" class="all">全部职能</a>
+															<a href="javascript:;" id="navchoose" >保险</a>
+														</div>
+														<div class="use">
+															<ul>
+																<li>保险经纪人</li>
+																<li>保险精算师</li>
+																<li>保险业务主管</li>
+																<li>储备经理人</li>
+															</ul>
+														</div>
+													</div>
+													<div class="htx">
+														<div class="nav">
+															<a href="javascript:;" class="all">全部职能</a>
+															<a href="javascript:;" id="navchoose" >金融/银行/投资</a>
+														</div>
+														<div class="use">
+															<ul>
+																<li>证券分析师</li>
+																<li>证券经理</li>
+																<li>融资经理</li>
+																<li>银行主任</li>
+																<li>其他金融</li>
+															</ul>
+														</div>
+													</div>
+													<div class="htx">
+														<div class="nav">
+															<a href="javascript:;" class="all">全部职能</a>
+															<a href="javascript:;" id="navchoose" >财务/审计/税务</a>
+														</div>
+														<div class="use">
+															<ul>
+																<li>财务主管</li>
+																<li>审计专员</li>
+																<li>成本专员</li>
+																<li>会计</li>
+																<li>财务/会计助理</li>
+																<li>统计</li>
+																<li>出纳</li>
+																<li>财务分析员</li>
+																<li>会计主管</li>
+															</ul>
+														</div>
+													</div>
+													<div class="htx">
+														<div class="nav">
+															<a href="javascript:;" class="all">全部职能</a>
+															<a href="javascript:;" id="navchoose">计算机/网络/通信</a>
+														</div>
+														<div class="use">
+															<ul>
+																<li>项目经理</li>
+																<li>网络推广</li>
+																<li>技术经理</li>
+																<li>网页设计制作</li>
+																<li>系统工程师</li>
+																<li>网站运营</li>
+																<li>网络维护</li>
+															</ul>
+														</div>
+													</div>
+													<div class="htx">
+														<div class="nav">
+															<a href="javascript:;" class="all">全部职能</a>
+															<a href="javascript:;" id="navchoose" >兼职</a>
+														</div>
+														<div class="use">
+															<ul>
+																<li>学生兼职</li>
+																<li>派单</li>
+																<li>模特</li>
+																<li>小时工/钟点工</li>
+																<li>翻译</li>
+																<li>打字员</li>
+																<li>家教</li>
+																<li>销售</li>
+																<li>礼仪小姐</li>
+																<li>问卷调查</li>
+																<li>促销员</li>
+															</ul>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="choose">
+												<a href="javascript:;" class="sure" id="sure">确定</a>
+												<a href="javascript:;" class="cancel" id="cancel">取消</a>
+											</div>
+										</div>
+									</div>
+								</div>
+								<script src="js/job.js"></script>
+			                </div>
+		                </div>
+		                <div class="term">
+		                	<h2>地     区</h2>
+		                	<div class="point">
+								<div id="intelligentboxs" class="intelligentall"></div>
+								<div><i id="select_intelligents" class="select_intelligent"></i></div>
+								<!--  隐藏效果 -->
+								<div class="poinbox" id='poinboxs'></div>
+								<div class="intelligentbox">
+									<div class="intelligent" id="intelligents">
+										<h2>选择地区<span></span></h2>
+										<div class="intelligent_box">
+											<div class="info" id="infos"></div>
+											<div class="main" id="mainsss">
+												<div class="main_tit" >
+													<a href="javascript:;" >全部地区</a>
+												</div>	
+												<div class="use">
+													<ul>
+														<li>辽宁省</li>
+														<li>黑龙江省</li>
+													</ul>
+												</div>
+											</div>
+											<div class="mains" id="mainss">
+												<div class="htx">
+													<div class="nav">
+														<a href="javascript:;" class="all">全部地区</a>
+														<a href="javascript:;" id="navchoose" >辽宁省</a>
+													</div>
+													<div class="use">
+														<ul>
+															<li>大连市</li>
+															<li>朝阳市</li>
+															<li>锦州市</li>
+														</ul>
+													</div>
+												</div>
+												<div class="htx">
+													<div class="nav">
+														<a href="javascript:;" class="all">全部地区</a>
+														<a href="javascript:;" id="navchoose" >黑龙江省省</a>
+													</div>
+													<div class="use">
+														<ul>
+															<li>大庆市</li>
+															<li>哈尔滨市</li>
+														</ul>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="choose">
+											<a href="javascript:;" class="sure" id="sures">确定</a>
+											<a href="javascript:;" class="cancel" id="cancels">取消</a>
+										</div>
+									</div>
+								</div>
+							</div>
+		                </div>
+		                <div class="termsbox" style="float:left;">
+			                <div class="term terms">
+			                	<h2>企业规模</h2>
+			                	<div class="term_name search_name" id="search_name">
+			                    	<div class="name"><span>不限</span><i></i></div>
+			                    	<ul>
+										<li>不限</li>
+										<li>1-50人</li>
+										<li>50-500人</li>
+									</ul>
+			                    </div>
+			                </div>
+			                <div class="term terms">
+			                	<h2>企业规模</h2>
+			                	<div class="term_name search_name" id="search_name">
+			                    	<div class="name"><span>上市公司</span><i></i></div>
+			                    	<ul>
+										<li>国有企业</li>
+										<li>上市公司</li>
+										<li>事业单位</li>
+									</ul>
+			                    </div>
+			                </div>
+		                </div>
+	                </div>
+	                <div class="posttwobox clearfix">
+	                	<div class="ask-btn"><i></i>搜索</div>
+	                </div>
+	                <div class="search_term">
+	                    <i>●</i>当前搜索:
+	                    <span>高级经理</span>
+	                    <!--<span class="red">清空搜索条件</span>-->
+	                </div>
+                </div>
+            </div>
+    	</div>
+    </div>
+    <script type="text/javascript">
+	$(function(){
+		//这是一个非常简单的demo实例，让列表元素分页显示
+		//回调函数的作用是显示对应分页的列表项内容
+		//回调函数在用户每次点击分页链接的时候执行
+		//参数page_index{int整型}表示当前的索引页
+		var initPagination = function() {
+			var num_entries = $("#hiddenresult div.list").length;
+			// 创建分页
+			$("#Pagination").pagination(num_entries, {
+				num_edge_entries: 1, //边缘页数
+				num_display_entries: 4, //主体页数
+				callback: pageselectCallback,
+				items_per_page:1 //每页显示1项
+			});
+		 }();
+		 
+		function pageselectCallback(page_index, jq){
+			var new_content = $("#hiddenresult div.list:eq("+page_index+")").clone();
+			$("#Searchresult").empty().append(new_content); //装载对应分页的内容
+			return false;
+		}
+	});
+	</script>
+	<script>
+	var isshow =1;
+	function removelbl(a){
+	  	$(a).parent().remove();
+	  	isshow = 2;
+	}
+	function layerDiv(){
+		if(isshow!=2){
+		    layer.open({
+		    type: 1,
+		    title :'选择行业分类',
+		    skin: 'layui-layer-rim', //加上边框
+		    content: $('#hangye')
+			});
+		}
+		isshow=1;
+	}
+	$(document).ready(function(){  
+	  	$("#queding,#quxiao").click(function(){
+	  		var biaoqian = '';
+			$(":checked[name=a]").each(function(){
+	    		biaoqian +='<span>' + $(this).val()+'<a class="close" href="javascript:void(0)" onclick="removelbl(this)"></a></span>';	
+	  		});
+			$("#input_btn").html(biaoqian);
+			layer.closeAll();
+		});
+		$("#select_btn").click(function(){
+			layerDiv();
+			$('.layui-layer-rim').fadeIn();
+		});	
+	});
+	</script>
+</body>
+</html>

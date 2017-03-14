@@ -1,0 +1,14 @@
+jQuery(document).ready(function(){
+	jQuery('.skillbar').each(function(){
+		jQuery(this).find('.skillbar-bar').animate({
+			height:jQuery(this).attr('data-percent')
+		},2000);
+	});
+});
+jQuery(document).ready(function(){
+	jQuery('.wskillbar').each(function(){
+		jQuery(this).find('.wskillbar-bar').animate({
+			width:jQuery(this).attr('data-percent')
+		},2000);
+	});
+});
