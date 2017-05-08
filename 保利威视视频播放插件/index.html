@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>test</title>
+
+    <!--引用保利威视插件jsSdk-->
+    <script src="js/bvlVideo.js"></script>
+    <style>
+        /*编写媒体查询
+        * 如果屏幕大于768 宽度默认800px
+        * 否则添加宽度百分之百属性
+        */
+        #videoDiv{
+            width: 800px;
+        }
+        @media screen and (max-width: 768px) {
+            #videoDiv{
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!--视频显示区域-->
+    <div id="videoDiv"></div>
+    <script>
+        // 获取视频显示区域宽度
+        var width = videoDiv.offsetWidth;
+        // 加载视频，设置视频宽高比例4:3
+        var player = polyvObject('#videoDiv').videoPlayer({
+            'width': width,                                 //视频宽度
+            'height': width * 0.6,                          //视频高度
+            'vid': 'plv_5c0ad4c56c04c26b6a5bfbd78d5b3f9e_5',//保利威视视频id
+            'flashParams': {                                //这里有各种配置属性：比如默认播放，快进后退等等 详细请看保利威视官方网站
+                'allowscriptaccess': 'always',
+                 'allowNetworking': 'all'
+            }
+        });
+    </script>
+</body>
+
+</html>
